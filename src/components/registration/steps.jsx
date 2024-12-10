@@ -700,6 +700,104 @@ NameStep.defaultProps = {
 
 const IntlNameStep = injectIntl(NameStep);
 
+/*
+ * PHONE VERIFICATION STEP
+ */
+
+const ResendText = chunks => <a className="blue-link">{chunks}</a>;
+const ContactUs = chunks => <a className="blue-underline">{chunks}</a>;
+const BoldText = chunks => <strong>{chunks}</strong>;
+
+
+class PhoneVerificationStep extends React.Component {
+    constructor (props) {
+        super(props);
+        bindAll(this, [
+            'handleValidSubmit'
+        ]);
+        this.state = {
+            waiting: false
+        };
+    }
+    handleValidSubmit (formData) {
+        this.setState({waiting: true});
+        this.props.onNextStep(formData);
+    }
+    render () {
+        return (
+            <Slide className="registration-step phone-verification-step">
+                <h2>
+                    <FormattedMessage id="teacherRegistration.phoneVerificationTitle" />
+                </h2>
+                <p className="description">
+                    <FormattedMessage id="teacherRegistration.phoneVerificationDescription" />
+                </p>
+                <Card>
+                    <Form onValidSubmit={this.handleValidSubmit}>
+                        <Input
+                            required
+                            label={
+                                this.props.intl.formatMessage({id: 'teacherRegistration.phoneVerificationCode'})
+                            }
+                            name="phoneVerificationCode"
+                            type="text"
+                            validationErrors={{
+                                matchRegexp: this.props.intl.formatMessage({
+                                    id: 'teacherRegistration.validationPhoneVerificationCode'
+                                })
+                            }}
+                            validations={{
+                                matchRegexp: /^\d{6}$/
+                            }}
+                        />
+                        <p className="text-small">
+                            <FormattedMessage
+                                id="teacherRegistration.phoneVerificationNotReceived"
+                                values={{a: ResendText, b: BoldText}}
+                            />
+                        </p>
+                        <div className="message-box error">
+                            <p className="message-box-text">
+                                <FormattedMessage
+                                    id="teacherRegistration.successfulConfirmation"
+                                />
+                            </p>
+                        </div>
+                        <div className="info-box">
+                            <FormattedMessage
+                                id="teacherRegistration.phoneVerificationIssues"
+                                values={{a: ContactUs}}
+                            />
+                        </div>
+                        <NextStepButton
+                            text={<FormattedMessage id="registration.nextStep" />}
+                            waiting={this.props.waiting || this.state.waiting}
+                        />
+                    </Form>
+                </Card>
+                <StepNavigation
+                    active={this.props.activeStep}
+                    steps={this.props.totalSteps - 1}
+                />
+            </Slide>
+        );
+    }
+}
+
+
+PhoneVerificationStep.propTypes = {
+    activeStep: PropTypes.number,
+    intl: intlShape,
+    onNextStep: PropTypes.func,
+    totalSteps: PropTypes.number,
+    waiting: PropTypes.bool
+};
+
+PhoneVerificationStep.defaultProps = {
+    waiting: false
+};
+
+const IntlPhoneVerificationStep = injectIntl(PhoneVerificationStep);
 
 /*
  * ORGANIZATION STEP
@@ -1596,3 +1694,4 @@ module.exports.ClassInviteNewStudentStep = IntlClassInviteNewStudentStep;
 module.exports.ClassInviteExistingStudentStep = IntlClassInviteExistingStudentStep;
 module.exports.ClassWelcomeStep = IntlClassWelcomeStep;
 module.exports.RegistrationError = IntlRegistrationError;
+module.exports.PhoneVerificationStep = IntlPhoneVerificationStep;

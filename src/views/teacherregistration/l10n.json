@@ -36,5 +36,14 @@
     "teacherRegistration.emailStepTitle": "Email Address",
     "teacherRegistration.emailStepDescription": "We will send you a confirmation email that will allow you to access your Scratch Teacher Account.",
     "teacherRegistration.validationEmailMatch": "The emails do not match",
-    "teacherRegistration.validationAge": "Sorry, teachers must be at least 16 years old"
+    "teacherRegistration.validationAge": "Sorry, teachers must be at least 16 years old",
+    "teacherRegistration.phoneVerificationTitle": "Verify phone number",
+    "teacherRegistration.phoneVerificationDescription": "Enter the verification code we sent to the number you provided in the previous step.",
+    "teacherRegistration.phoneVerificationCode": "Verification Code",
+    "teacherRegistration.phoneVerificationNotReceived": "<b>Did not receive the code?</b> <a>Resend Code</a>",
+    "teacherRegistration.phoneVerificationIssues": "If you are experiencing issues with your verification code, please <a>contact us</a>.",
+    "teacherRegistration.successfulConfirmation": "The code has been successfully confirmed.",
+    "teacherRegistration.resentCode":"The code has been resent.",
+    "teacherRegistration.reachedAllowedAttempts": "You have reached the limit of allowed attempts, please <a>contact us</a> for assistance."
+
 }

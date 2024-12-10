@@ -218,3 +218,63 @@
         }
     }
 }
+
+.phone-verification-step {
+
+    .blue-link {
+        color: $ui-blue;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .text-small {
+        font-size: 14px;
+        margin-left: -0.4rem;
+        margin-right:-0.4rem;
+        text-align: center;
+    }
+
+    .blue-underline{
+        text-decoration: underline;
+        color: $ui-blue
+    }
+
+    .info-box{
+        display: block;
+        margin: 0 -4rem 0 -4rem;
+        background-color: #e0f4ff; // todo change
+        color: $ui-blue;
+        padding: 1rem; 
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+    }   
+
+    .message-box{
+        border:1px solid;
+        margin:1rem 0rem;
+        padding-left:0.5rem;
+        padding-right: 0.5rem;
+        border-radius: 8px;
+    }
+
+    .message-box-text{
+        font-size: 12px;
+    }
+
+    .message-box.success{
+        background-color: $ui-green-35percent;
+        border-color: $ui-mint-green;
+    }
+
+
+    .message-box.error{
+        background-color: $ui-red-25percent;
+        border-color: $ui-red;
+    }
+
+    .message-box.warning{
+        background-color: $ui-orange-25percent;
+        border-color: $ui-orange;
+    }
+}
